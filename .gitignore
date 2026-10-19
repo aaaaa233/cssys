@@ -5,6 +5,6 @@ results/
 labs/**/_qa/
 labs/**/参考数据/
 labs/**/*.md
-labs/**/*.pptx
+labs/**/幻灯片.pptx
 gem5/build/
 gem5/util/m5/build/

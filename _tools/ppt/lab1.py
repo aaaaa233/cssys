@@ -175,9 +175,9 @@ def build():
           spacing=1.32)
 
     T.code(s, M, y + Inches(2.70), CONTENT_W, [
-        "$GEM5_BIN --outdir=out/试一下 framework/cssys_se.py \\",
+        "$GEM5_BIN --outdir=out/lab1 framework/cssys_se.py \\",
         "    --cmd bench/bin/riscv/qnn --options \"8 1234\" --cpu o3",
-        "python3 framework/stats.py out/试一下/stats.txt",
+        "python3 framework/stats.py out/lab1/stats.txt",
     ], size=13.5)
     T.txt(s, M, y + Inches(4.01), CONTENT_W, Inches(0.3),
           [("--options 的第二个参数为学号后四位。seed 不同则权重不同，"
