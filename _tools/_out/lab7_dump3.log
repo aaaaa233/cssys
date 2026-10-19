@@ -1,0 +1,90 @@
+########## (a) b1/b2/b4/b8 × 四个种子（pe48 w6 CUT） ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+A_1234_b1,93348,84685,564.6,2312938,52.7044,215.9081,20.1546,266.4,8.3,15.3,194.6,80.0,0.0
+A_1234_b2,74886,84841,564.6,1830029,42.2807,137.0436,10.2626,266.4,8.3,15.3,194.6,80.0,0.0
+A_1234_b4,74478,84746,564.6,1788808,42.0504,133.2268,9.9225,266.4,8.3,15.3,194.6,80.0,0.0
+A_1234_b8,79749,84732,564.6,1894083,45.0264,151.0512,12.0462,266.4,8.3,15.3,194.6,80.0,0.0
+A_2505_b1,93418,84665,564.6,2314550,52.7439,216.2207,20.1989,266.4,8.3,15.3,194.6,80.0,0.0
+A_2505_b2,74680,84824,564.6,1825077,42.1644,136.2967,10.1786,266.4,8.3,15.3,194.6,80.0,0.0
+A_2505_b4,74256,84729,564.6,1783575,41.9250,132.4411,9.8345,266.4,8.3,15.3,194.6,80.0,0.0
+A_2505_b8,79827,84715,564.6,1895989,45.0704,151.3511,12.0819,266.4,8.3,15.3,194.6,80.0,0.0
+A_3333_b1,93173,84701,564.6,2309017,52.6056,215.1380,20.0451,266.4,8.3,15.3,194.6,80.0,0.0
+A_3333_b2,74398,84859,564.6,1818566,42.0052,135.2976,10.0659,266.4,8.3,15.3,194.6,80.0,0.0
+A_3333_b4,74193,84764,564.6,1781967,41.8895,132.2094,9.8090,266.4,8.3,15.3,194.6,80.0,0.0
+A_3333_b8,79330,84750,564.6,1884565,44.7898,149.5025,11.8600,266.4,8.3,15.3,194.6,80.0,0.0
+A_abcd_b1,93608,84661,564.6,2319166,52.8512,217.0925,20.3216,266.4,8.3,15.3,194.6,80.0,0.0
+A_abcd_b2,74833,84819,564.6,1828650,42.2508,136.8434,10.2404,266.4,8.3,15.3,194.6,80.0,0.0
+A_abcd_b4,74565,84724,564.6,1790757,42.0995,133.5278,9.9565,266.4,8.3,15.3,194.6,80.0,0.0
+A_abcd_b8,79884,84710,564.6,1897461,45.1026,151.5768,12.1086,266.4,8.3,15.3,194.6,80.0,0.0
+
+########## (b) 三条路线在 600 A 预算内各自的最好成绩 ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+P1_a,1020074,5801400,589.7,34086584,601.5277,34770.8384,35468.8283,371.5,8.3,15.3,194.6,0.0,0.0
+P1_b,1020074,5801400,553.9,33794109,564.9682,34472.4917,35164.4925,335.6,8.3,15.3,194.6,0.0,0.0
+P1_c,1019929,5801400,608.7,34237585,620.8290,34919.9059,35615.8247,390.5,8.3,15.3,194.6,0.0,0.0
+P2_a,203773,517880,621.7,6691407,126.6837,1363.5281,277.8502,371.5,8.3,15.3,194.6,0.0,32.0
+P2_b,203773,517880,585.9,6632981,119.3805,1351.6225,275.4242,335.6,8.3,15.3,194.6,0.0,32.0
+P2_c,312276,517880,578.1,9713954,180.5418,3033.4347,947.2689,323.9,8.3,15.3,194.6,0.0,36.0
+P2_d,307267,517880,590.1,9598218,181.3331,2949.2158,906.1967,323.9,8.3,15.3,194.6,0.0,48.0
+P3_a,74256,84729,564.6,1783575,41.9250,132.4411,9.8345,266.4,8.3,15.3,194.6,80.0,0.0
+
+########## (c) width 陷阱的机理：取指统计 ##########
+===== width 2 =====
+system.cpu.numCycles                          3341827                       # Number of cpu cycles simulated (Cycle)
+system.cpu.commit.commitSquashedInsts            7246                       # The number of squashed insts skipped by commit (Count)
+system.cpu.decode.blockedCycles                  8267                       # Number of cycles decode is blocked (Cycle)
+system.cpu.fetch.predictedBranches             824216                       # Number of branches that fetch has predicted taken (Count)
+system.cpu.fetch.cycles                       3327159                       # Number of cycles fetch has run and was not squashing or blocked (Cycle)
+system.cpu.fetch.squashCycles                    2906                       # Number of cycles fetch has spent squashing (Cycle)
+system.cpu.iew.dispatchedInsts                5808646                       # Number of instructions dispatched to IQ (Count)
+system.cpu.iew.iqFullEvents                         0                       # Number of times the IQ has become full, causing a stall (Count)
+system.cpu.iew.lsqFullEvents                        0                       # Number of times the LSQ has become full, causing a stall (Count)
+system.cpu.rename.blockCycles                    2202                       # Number of cycles rename is blocking (Cycle)
+system.cpu.rob.reads                          6467740                       # The number of ROB reads (Count)
+===== width 4 =====
+system.cpu.numCycles                          1711487                       # Number of cpu cycles simulated (Cycle)
+system.cpu.commit.commitSquashedInsts           29262                       # The number of squashed insts skipped by commit (Count)
+system.cpu.decode.blockedCycles                 46119                       # Number of cycles decode is blocked (Cycle)
+system.cpu.fetch.predictedBranches             828823                       # Number of branches that fetch has predicted taken (Count)
+system.cpu.fetch.cycles                       1696372                       # Number of cycles fetch has run and was not squashing or blocked (Cycle)
+system.cpu.fetch.squashCycles                    2910                       # Number of cycles fetch has spent squashing (Cycle)
+system.cpu.iew.dispatchedInsts                5830662                       # Number of instructions dispatched to IQ (Count)
+system.cpu.iew.iqFullEvents                         0                       # Number of times the IQ has become full, causing a stall (Count)
+system.cpu.iew.lsqFullEvents                        0                       # Number of times the LSQ has become full, causing a stall (Count)
+system.cpu.rename.blockCycles                    6714                       # Number of cycles rename is blocking (Cycle)
+system.cpu.rob.reads                          6141171                       # The number of ROB reads (Count)
+===== width 6 =====
+system.cpu.numCycles                          1703782                       # Number of cpu cycles simulated (Cycle)
+system.cpu.commit.commitSquashedInsts           14099                       # The number of squashed insts skipped by commit (Count)
+system.cpu.decode.blockedCycles                 30437                       # Number of cycles decode is blocked (Cycle)
+system.cpu.fetch.predictedBranches             826645                       # Number of branches that fetch has predicted taken (Count)
+system.cpu.fetch.cycles                       1688862                       # Number of cycles fetch has run and was not squashing or blocked (Cycle)
+system.cpu.fetch.squashCycles                    2912                       # Number of cycles fetch has spent squashing (Cycle)
+system.cpu.iew.dispatchedInsts                5815499                       # Number of instructions dispatched to IQ (Count)
+system.cpu.iew.iqFullEvents                         0                       # Number of times the IQ has become full, causing a stall (Count)
+system.cpu.iew.lsqFullEvents                        0                       # Number of times the LSQ has become full, causing a stall (Count)
+system.cpu.rename.blockCycles                    1876                       # Number of cycles rename is blocking (Cycle)
+system.cpu.rob.reads                          6674446                       # The number of ROB reads (Count)
+===== width 8 =====
+system.cpu.numCycles                          1099934                       # Number of cpu cycles simulated (Cycle)
+system.cpu.commit.commitSquashedInsts           34020                       # The number of squashed insts skipped by commit (Count)
+system.cpu.decode.blockedCycles                303391                       # Number of cycles decode is blocked (Cycle)
+system.cpu.fetch.predictedBranches             834590                       # Number of branches that fetch has predicted taken (Count)
+system.cpu.fetch.cycles                       1084779                       # Number of cycles fetch has run and was not squashing or blocked (Cycle)
+system.cpu.fetch.squashCycles                    2912                       # Number of cycles fetch has spent squashing (Cycle)
+system.cpu.iew.dispatchedInsts                5835420                       # Number of instructions dispatched to IQ (Count)
+system.cpu.iew.iqFullEvents                         0                       # Number of times the IQ has become full, causing a stall (Count)
+system.cpu.iew.lsqFullEvents                       35                       # Number of times the LSQ has become full, causing a stall (Count)
+system.cpu.rename.blockCycles                    3564                       # Number of cycles rename is blocking (Cycle)
+system.cpu.rob.reads                          6919821                       # The number of ROB reads (Count)
+
+########## (c2) 取指组分布（rateDist），看有没有卡在 6 ##########
+===== width 6  fetch.rateDist =====
+===== width 8  fetch.rateDist =====
+
+########## (d) checksum 自检 ##########
+      4 qnn samples=8 seed=0x00001234 checksum=0xe3c3a05e
+      4 qnn samples=8 seed=0x00003333 checksum=0x7e95c7c9
+      4 qnn samples=8 seed=0x0000abcd checksum=0xb7096df2
+     16 qnn samples=8 seed=0x01352505 checksum=0x1989da45
+DUMP3DONE

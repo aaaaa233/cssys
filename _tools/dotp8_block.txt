@@ -1,0 +1,18 @@
+        // ==== lab5: custom-0 (opcode 0x0b) ====
+        // dotp8 rd, rs1, rs2
+        //   rd += sum_{k=0..7} (int8_t)rs1[k] * (int8_t)rs2[k]
+        // rd is read-modify-write: it is both a source and a destination.
+        0x02: decode FUNCT3 {
+            format ROp {
+                0x0: dotp8({{
+                    int64_t acc = Rd_sd;
+                    for (int k = 0; k < 8; ++k) {
+                        int8_t x = (int8_t)(Rs1_ud >> (k * 8));
+                        int8_t y = (int8_t)(Rs2_ud >> (k * 8));
+                        acc += (int64_t)x * (int64_t)y;
+                    }
+                    Rd_sd = acc;
+                }}, SimdMultAccOp);
+            }
+        }
+

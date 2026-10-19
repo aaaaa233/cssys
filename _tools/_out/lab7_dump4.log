@@ -1,0 +1,55 @@
+########## (e) 把 35.4 A 裕量花掉的所有候选（底盘 = b4/pe48/w6/564.6A） ##########
+  FAIL E_mshr
+找不到 out/lab7/dump4/E_mshr/config.ini —— 参数应当是 gem5 的 --outdir 目录
+
+########## (f) 实验六附录 C：b8 变慢是不是因为 L1D 装不下了 ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+F_b2_l1d32,75886,84824,592.5,1886069,44.9616,143.1262,10.8613,266.4,8.3,43.2,194.6,80.0,0.0
+F_b2_l1d8,74680,84824,564.6,1825077,42.1644,136.2967,10.1786,266.4,8.3,15.3,194.6,80.0,0.0
+F_b4_l1d32,75792,84729,592.5,1860483,44.9059,141.0097,10.6874,266.4,8.3,43.2,194.6,80.0,0.0
+F_b4_l1d8,74256,84729,564.6,1783575,41.9250,132.4411,9.8345,266.4,8.3,15.3,194.6,80.0,0.0
+F_b8_l1d32,80551,84715,592.5,1959983,47.7255,157.8786,12.7173,266.4,8.3,43.2,194.6,80.0,0.0
+F_b8_l1d8,79827,84715,564.6,1895989,45.0704,151.3511,12.0819,266.4,8.3,15.3,194.6,80.0,0.0
+--- 各自的 L1D/L2 缺失 ---
+F_b2_l1d8      system.cpu.dcache.overallMisses::total=800  
+F_b4_l1d8      system.cpu.dcache.overallMisses::total=1278  
+F_b8_l1d8      system.cpu.dcache.overallMisses::total=2401  
+F_b2_l1d32     system.cpu.dcache.overallMisses::total=885  
+F_b4_l1d32     system.cpu.dcache.overallMisses::total=1348  
+F_b8_l1d32     system.cpu.dcache.overallMisses::total=2401  
+
+########## (g) LQ/SQ 单独一项在两个程序上的价钱 ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+G_sw_none,1020074,5801400,589.7,34086584,601.5277,34770.8384,35468.8283,371.5,8.3,15.3,194.6,0.0,0.0
+G_sw_btb,1020074,5801400,553.9,33794109,564.9682,34472.4917,35164.4925,335.6,8.3,15.3,194.6,0.0,0.0
+G_sw_lqsq,1448914,5801400,578.0,46264424,837.4553,67033.1720,97125.3014,359.8,8.3,15.3,194.6,0.0,0.0
+G_sw_lq,1448779,5801400,583.8,46328349,845.8541,67119.5393,97241.3790,365.6,8.3,15.3,194.6,0.0,0.0
+G_sw_sq,1020209,5801400,583.8,34042733,595.6381,34730.7021,35432.5749,365.6,8.3,15.3,194.6,0.0,0.0
+G_ac_none,74671,84729,612.1,1821345,45.7093,136.0017,10.1554,313.9,8.3,15.3,194.6,80.0,0.0
+G_ac_lqsq,74256,84729,600.4,1804865,44.5864,134.0221,9.9519,302.2,8.3,15.3,194.6,80.0,0.0
+
+########## (h) 取指假说：基本块长度 vs width 曲线 ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+H_d8_w2,311545,517880,726.4,5142692,226.3152,1602.1800,499.1512,248.9,43.2,43.2,359.2,0.0,32.0
+H_d8_w4,263831,517880,760.8,6247527,200.7276,1648.2913,434.8704,283.3,43.2,43.2,359.2,0.0,32.0
+H_d8_w6,250237,517880,808.4,7603278,202.2852,1902.6214,476.1063,330.8,43.2,43.2,359.2,0.0,32.0
+H_d8_w8,244346,517880,868.0,9044305,212.1006,2209.9397,539.9899,390.5,43.2,43.2,359.2,0.0,32.0
+--- 基本块长度 = ROI 指令数 / fetch 预测为 taken 的分支数 ---
+H_d8_w8    system.cpu.numCycles=244346  system.cpu.decode.blockedCycles=138097  system.cpu.fetch.predictedBranches=40192  system.cpu.fetch.cycles=224454  
+H_d8_w6    system.cpu.numCycles=250237  system.cpu.decode.blockedCycles=119334  system.cpu.fetch.predictedBranches=39810  system.cpu.fetch.cycles=230262  
+H_d8_w4    system.cpu.numCycles=263831  system.cpu.decode.blockedCycles=87031  system.cpu.fetch.predictedBranches=39159  system.cpu.fetch.cycles=244167  
+--- 对照：qnn 自己的 ---
+qnn_w8  system.cpu.fetch.predictedBranches=834590  
+qnn_w6  system.cpu.fetch.predictedBranches=826645  
+qnn_w4  system.cpu.fetch.predictedBranches=828823  
+qnn_w2  system.cpu.fetch.predictedBranches=824216  
+
+########## (i) L2 免费的边界在哪：DRAM 行数 / L2 缺失 ##########
+l2=64kB   system.cpu.numCycles=2365081  system.mem_ctrl.dram.bytesRead::total=820224  
+l2=128kB  system.cpu.numCycles=1075351  system.mem_ctrl.dram.bytesRead::total=2304  
+l2=256kB  system.cpu.numCycles=1099934  system.mem_ctrl.dram.bytesRead::total=1472  
+l2=512kB  system.cpu.numCycles=1124634  system.mem_ctrl.dram.bytesRead::total=1472  
+
+########## (j) checksum 自检 ##########
+     31 qnn samples=8 seed=0x01352505 checksum=0x1989da45
+DUMP4DONE

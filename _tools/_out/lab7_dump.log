@@ -1,0 +1,417 @@
+########## 1) 基线 qnn 默认 o3 —— 面积/能量分项 ##########
+==================================================================
+out/lab7/base
+==================================================================
+部件                    面积(A)   占比
+------------------------------------------------------------------
+L1I                    43.2     5.2% ██
+      kB                 32.0
+      assoc               2.0
+      数据                 32.0
+      tag                 3.8
+      相联                  1.3
+      替换状态                0.1
+      MSHR                6.0
+L1D                    43.2     5.2% ██
+      kB                 32.0
+      assoc               2.0
+      数据                 32.0
+      tag                 3.8
+      相联                  1.3
+      替换状态                0.1
+      MSHR                6.0
+L2                    359.2    43.0% █████████████████████
+      kB                256.0
+      assoc               8.0
+      数据                256.0
+      tag                30.7
+      相联                 41.0
+      替换状态                1.5
+      MSHR               30.0
+核心                    390.5    46.7% ███████████████████████
+      ROB                31.1
+      发射队列               17.9
+      LQ                  9.1
+      SQ                  9.1
+      物理寄存器              23.0
+      发射/旁路网络           126.7
+      分支预测器               7.2
+      BTB                46.1
+      RAS                 0.3
+      固定开销              120.0
+------------------------------------------------------------------
+总计                    836.0
+
+ROI 时间              1099934 周期
+ROI 指令              5801400 条  (IPC 5.274)
+
+能量来源                  能量(E)   占比
+------------------------------------------------------------------
+L1I 访问                37047     0.1% 
+L1D 访问              9271511    21.4% ██████████
+L2 访问                205328     0.5% 
+DRAM                    575     0.0% 
+核心                 26398416    61.0% ██████████████████████████████
+泄漏                  7356655    17.0% ████████
+------------------------------------------------------------------
+总能量                43269531
+
+综合指标
+------------------------------------------------------------------
+  三个基本量（都是越小越好）
+    T  时间                 1099934  周期
+    A  面积                   836.0  A
+    E  能量                43269531  E
+  组合指标（越小越好）
+    ADP = A·T                919.58   (A×1e6 周期)
+    EDP = E·T              47593.63   (1e3 E×1e6 周期)
+    ED²P = E·T²            52349.85   (1e3 E×1e12 周期²)
+  注：常说的"性能/面积"就是 1/ADP，"性能/能量"就是 1/EDP——
+      它们和上面两个是同一个指标的倒数，不是新指标。
+
+
+########## 2) 实验六定稿配置 qnn_accel pe32 —— 面积分项 ##########
+==================================================================
+out/lab7/l6
+==================================================================
+部件                    面积(A)   占比
+------------------------------------------------------------------
+L1I                    43.2     4.8% ██
+      kB                 32.0
+      assoc               2.0
+      数据                 32.0
+      tag                 3.8
+      相联                  1.3
+      替换状态                0.1
+      MSHR                6.0
+L1D                    43.2     4.8% ██
+      kB                 32.0
+      assoc               2.0
+      数据                 32.0
+      tag                 3.8
+      相联                  1.3
+      替换状态                0.1
+      MSHR                6.0
+L2                    359.2    39.9% ███████████████████
+      kB                256.0
+      assoc               8.0
+      数据                256.0
+      tag                30.7
+      相联                 41.0
+      替换状态                1.5
+      MSHR               30.0
+核心                    390.5    43.4% █████████████████████
+      ROB                31.1
+      发射队列               17.9
+      LQ                  9.1
+      SQ                  9.1
+      物理寄存器              23.0
+      发射/旁路网络           126.7
+      分支预测器               7.2
+      BTB                46.1
+      RAS                 0.3
+      固定开销              120.0
+加速器                    64.0     7.1% ███
+      pe                 32.0
+      outstanding         8.0
+      MAC 阵列             32.0
+      访存队列               12.0
+      控制/缓冲              20.0
+------------------------------------------------------------------
+总计                    900.0
+
+ROI 时间                94363 周期
+ROI 指令                84665 条  (IPC 0.897)
+
+能量来源                  能量(E)   占比
+------------------------------------------------------------------
+L1I 访问                 3982     0.1% 
+L1D 访问                70190     2.2% █
+L2 访问                142464     4.4% ██
+DRAM                    750     0.0% 
+核心                  2264712    70.7% ███████████████████████████████████
+加速器 MAC               40653     1.3% 
+泄漏                   679439    21.2% ██████████
+------------------------------------------------------------------
+总能量                 3202191
+
+综合指标
+------------------------------------------------------------------
+  三个基本量（都是越小越好）
+    T  时间                   94363  周期
+    A  面积                   900.0  A
+    E  能量                 3202191  E
+  组合指标（越小越好）
+    ADP = A·T                 84.93   (A×1e6 周期)
+    EDP = E·T                302.17   (1e3 E×1e6 周期)
+    ED²P = E·T²               28.51   (1e3 E×1e12 周期²)
+  注：常说的"性能/面积"就是 1/ADP，"性能/能量"就是 1/EDP——
+      它们和上面两个是同一个指标的倒数，不是新指标。
+
+
+########## 3) 参考最优 G_pe48_w6 —— 面积/能量分项 ##########
+==================================================================
+out/lab7/dump/best
+==================================================================
+部件                    面积(A)   占比
+------------------------------------------------------------------
+L1I                     8.3     1.5% 
+      kB                  2.0
+      assoc               2.0
+      数据                  2.0
+      tag                 0.2
+      相联                  0.1
+      替换状态                0.0
+      MSHR                6.0
+L1D                    15.3     2.7% █
+      kB                  8.0
+      assoc               2.0
+      数据                  8.0
+      tag                 1.0
+      相联                  0.3
+      替换状态                0.0
+      MSHR                6.0
+L2                    194.6    34.5% █████████████████
+      kB                128.0
+      assoc               8.0
+      数据                128.0
+      tag                15.4
+      相联                 20.5
+      替换状态                0.8
+      MSHR               30.0
+核心                    266.4    47.2% ███████████████████████
+      ROB                18.4
+      发射队列               15.5
+      LQ                  3.2
+      SQ                  3.2
+      物理寄存器              12.8
+      发射/旁路网络            75.5
+      分支预测器               7.2
+      BTB                10.2
+      RAS                 0.3
+      固定开销              120.0
+加速器                    80.0    14.2% ███████
+      pe                 48.0
+      outstanding         8.0
+      MAC 阵列             48.0
+      访存队列               12.0
+      控制/缓冲              20.0
+------------------------------------------------------------------
+总计                    564.6
+
+ROI 时间                74680 周期
+ROI 指令                84824 条  (IPC 1.136)
+
+能量来源                  能量(E)   占比
+------------------------------------------------------------------
+L1I 访问                  407     0.0% 
+L1D 访问                31905     1.7% 
+L2 访问                 69082     3.8% █
+DRAM                   1475     0.1% 
+核心                  1344240    73.7% ████████████████████████████████████
+加速器 MAC               40653     2.2% █
+泄漏                   337315    18.5% █████████
+------------------------------------------------------------------
+总能量                 1825077
+
+综合指标
+------------------------------------------------------------------
+  三个基本量（都是越小越好）
+    T  时间                   74680  周期
+    A  面积                   564.6  A
+    E  能量                 1825077  E
+  组合指标（越小越好）
+    ADP = A·T                 42.16   (A×1e6 周期)
+    EDP = E·T                136.30   (1e3 E×1e6 周期)
+    ED²P = E·T²               10.18   (1e3 E×1e12 周期²)
+  注：常说的"性能/面积"就是 1/ADP，"性能/能量"就是 1/EDP——
+      它们和上面两个是同一个指标的倒数，不是新指标。
+
+
+########## 4) 任务3 单旋钮扫描 27 点（旧数据，直接读） ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+--- 实际存在的 sweep 目录 ---
+out/sweeps/lab1_cpu_models/
+out/sweeps/lab1_fidelity/
+out/sweeps/lab2_assoc/
+out/sweeps/lab2_final/
+out/sweeps/lab2_knee/
+out/sweeps/lab2_l1d_size/
+out/sweeps/lab2_l2/
+out/sweeps/lab2_latsens/
+out/sweeps/lab2_line/
+out/sweeps/lab2_line_mshr/
+out/sweeps/lab2_mshr/
+out/sweeps/lab2_nolat/
+out/sweeps/lab2_pchase/
+out/sweeps/lab2_repl/
+out/sweeps/lab2_replfam/
+out/sweeps/lab3_all_repl/
+out/sweeps/lab3_assoc/
+out/sweeps/lab3_l1repl_ctl/
+out/sweeps/lab3_l2repl/
+out/sweeps/lab3_mine/
+out/sweeps/lab3_mine_l2/
+out/sweeps/lab3_nopath/
+out/sweeps/lab3_pf/
+out/sweeps/lab3_pf_pchase/
+out/sweeps/lab3_pf_vs_size/
+out/sweeps/lab3_probe_pf/
+out/sweeps/lab3_probe_repl/
+out/sweeps/lab3_promote/
+out/sweeps/lab3_promote_pc/
+out/sweeps/lab4_allbp/
+out/sweeps/lab4_allin/
+out/sweeps/lab4_bp_qnn/
+out/sweeps/lab4_branchy/
+out/sweeps/lab4_branchy1/
+out/sweeps/lab4_branchy2/
+out/sweeps/lab4_btb/
+out/sweeps/lab4_btb2/
+out/sweeps/lab4_iq/
+out/sweeps/lab4_iq_nolq/
+out/sweeps/lab4_l3timing/
+out/sweeps/lab4_lag/
+out/sweeps/lab4_lag0/
+out/sweeps/lab4_lagfine/
+out/sweeps/lab4_lq/
+out/sweeps/lab4_probe/
+out/sweeps/lab4_regs/
+out/sweeps/lab4_rob/
+out/sweeps/lab4_rob2/
+out/sweeps/lab4_width/
+out/sweeps/lab4_wxbp/
+out/sweeps/lab5b_lat_qnn_dotp8/
+out/sweeps/lab5b_lat_qnn_dotp8x2/
+out/sweeps/lab5b_lat_qnn_dotp8x4c/
+out/sweeps/lab5b_qnn/
+out/sweeps/lab5b_qnn_dotp8/
+out/sweeps/lab5b_qnn_dotp8u4/
+out/sweeps/lab5b_qnn_dotp8x2/
+out/sweeps/lab5b_qnn_dotp8x4/
+out/sweeps/lab5b_qnn_dotp8x4c/
+out/sweeps/lab5_fb_qnn_dotp8x4/
+out/sweeps/lab5_fb_qnn_dotp8x4c/
+out/sweeps/lab5_lat_qnn_dotp8/
+out/sweeps/lab5_lat_qnn_dotp8x2/
+out/sweeps/lab5_lat_qnn_dotp8x4c/
+out/sweeps/lab5_qnn/
+out/sweeps/lab5_qnn_dotp8/
+out/sweeps/lab5_qnn_dotp8u4/
+out/sweeps/lab5_qnn_dotp8x2/
+out/sweeps/lab5_qnn_dotp8x4/
+out/sweeps/lab5_qnn_dotp8x4c/
+out/sweeps/lab6_m1_accel/
+out/sweeps/lab6_m1_soft/
+out/sweeps/lab6_m3_outstanding/
+out/sweeps/lab6_m4_batch/
+out/sweeps/lab6_m5_l2size/
+out/sweeps/lab6_where_pe/
+out/sweeps/lab7_s_iq/
+out/sweeps/lab7_s_l1d/
+out/sweeps/lab7_s_l1i/
+out/sweeps/lab7_s_l2/
+out/sweeps/lab7_s_regs/
+out/sweeps/lab7_s_rob/
+out/sweeps/lab7_s_width/
+out/sweeps/test_l1d/
+
+########## 5) 任务5 对照实验 X1..X4 ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+X1,1020074,5801400,589.7,34086584,601.5277,34770.8384,35468.8283,371.5,8.3,15.3,194.6,0.0,0.0
+X2,1699273,5801400,486.7,31793520,827.0351,54025.8704,91804.7029,268.5,8.3,15.3,194.6,0.0,0.0
+X3,80397,84824,653.7,2494569,52.5547,200.5559,16.1241,371.5,8.3,15.3,194.6,64.0,0.0
+X4,82971,84824,550.7,1503409,45.6921,124.7393,10.3497,268.5,8.3,15.3,194.6,64.0,0.0
+
+########## 6) 任务2第5问：icache vs dcache 访问次数 ##########
+system.cpu.dcache.overallAccesses::total      1638987                       # number of overall (read+write) accesses (Count)
+system.cpu.icache.overallAccesses::total         6549                       # number of overall (read+write) accesses (Count)
+system.cpu.dcache.overallAccesses::total         4012                       # number of overall (read+write) accesses (Count)
+system.cpu.icache.overallAccesses::total         2158                       # number of overall (read+write) accesses (Count)
+
+########## 7) 免费旋钮逐个叠加（任务3第2问的标准答案） ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+S0,1099934,5801400,836.0,43269531,919.5819,47593.6287,52349.8504,390.5,43.2,43.2,359.2,0.0,0.0
+S1,1075351,5801400,671.4,41038600,722.0376,44130.8999,47456.2074,390.5,43.2,43.2,194.6,0.0,0.0
+S2,1071341,5801400,636.6,40603303,681.9997,43499.9830,46603.3153,390.5,8.3,43.2,194.6,0.0,0.0
+S3,1019929,5801400,608.7,34237585,620.8290,34919.9059,35615.8247,390.5,8.3,15.3,194.6,0.0,0.0
+S4,1020074,5801400,598.3,34157092,610.3411,34842.7613,35542.1949,380.1,8.3,15.3,194.6,0.0,0.0
+S5,1020074,5801400,589.7,34086584,601.5277,34770.8384,35468.8283,371.5,8.3,15.3,194.6,0.0,0.0
+
+########## 8) 模型系数（参考解答附录 B 要抄） ##########
+面积/能量模型的全部系数与依据
+======================================================================
+单位： 1 A = 1 KB SRAM 数据阵列的面积（≈400 µm² @7nm）
+       1 E = 访问一次 1 KB SRAM 的能量（≈1 pJ）
+
+sram_per_kb            1.0        定义：1 A = 1 KB 数据阵列
+tag_frac_64B           0.12       64B 行的 tag+状态位约占数据阵列的 12%：48 位物理地址去掉块内偏移和组索引，再加 valid/dirty/一致性状态，一行约 40 位 tag 对 512 位数据
+assoc_per_way          0.02       每多一路要多一个比较器和一路数据 mux，约为数据阵列的 2%/路（8 路 → +16%）
+mshr                   1.5        一个 MSHR = 地址 CAM 项 + 目标队列(tgts_per_mshr 项)，比一个 Cache 行贵，取 1.5 A
+repl_bits             （分项）
+    lru            log2(assoc) 真 LRU 要给每行存一个序号
+    random         0          不需要任何状态
+    rrip           2          RRPV 是 2 位
+    brrip          2          同 RRIP
+    drrip          2          同 RRIP，另加一个 32 项的 PSEL 计数器(忽略)
+    ship           2          RRPV 2 位；另有签名表，见 ship_table
+    fifo           0          组内一个插入指针即可，按 0 计
+    lip            log2(assoc) 同 LRU
+    mru            log2(assoc) 同 LRU
+    secondchance   1          每行一个引用位
+    treeplru       1          树形伪 LRU 每行约 1 位
+    weightedlru    log2(assoc) 同 LRU
+    dueling        2          按 RRIP 计
+ship_table             8.0        SHiP 的签名历史表 (SHCT)，约 16k 项 × 3 位 ≈ 6 KB → 8 A
+prefetcher            （分项）
+    none           0.0        没有就是没有
+    nextline       0.5        只要一个加法器和一个队列
+    stride         4.0        PC 索引的步长表，约 64 项 × (PC+lastAddr+stride+conf)
+    tagged         1.0        next-line 加一个 tag 位
+    ampm           16.0       AMPM 要一张访问位图，是这几个里最贵的
+    signature      12.0       SPP 的签名表 + 模式表
+    indirect       10.0       间接预取器要存基址和步幅候选
+rob_per_entry          0.09       一个 ROB 项存 PC、目的寄存器、异常状态等约 8 字节，外加 commitWidth 个读端口的开销
+iq_coef                0.035      发射队列是 CAM：每周期要拿 issueWidth 个结果标签去唤醒所有项。面积按 n^1.5 增长(唤醒网络是超线性的)
+iq_exp                 1.5        同上
+lsq_coef               0.05       LQ/SQ 要做地址比较(访存序违例检查)，也是 CAM
+lsq_exp                1.5        同上
+prf_per_reg            0.05       一个 64 位物理寄存器 + 重命名表项
+prf_port_coef          0.1        寄存器堆面积随端口数超线性增长，端口数正比于发射宽度
+width_coef             3.0        取指/译码/重命名/旁路网络。**旁路网络是 n² 结构**，整体按 width^1.8 建模——这是宽发射最大的一笔账
+width_exp              1.8        同上
+btb_per_entry          0.01       一个 BTB 项 = 部分 tag + 目标地址 ≈ 8 字节
+bp_per_kbit            0.125      预测器的计数器表，按位数折算成 SRAM
+ras_per_entry          0.02       返回地址栈
+core_fixed             120.0      译码器、异常/中断逻辑、TLB、时钟树、以及所有没被单独建模的东西。**这是本模型最粗的一项**，见 --model 的告诫
+dotp8_unit             6.0        一个 4 路 int8 点积单元：4 个 8×8 乘法器 + 加法树 + 累加器。约等于 6 KB SRAM 的面积
+dotp8_lat_penalty      1.0        同样一棵乘加树，要求 1 拍出结果就得加大驱动、把加法树整个展开；要求 3 拍就能流水切开、用小门。面积按 (1 + 1/opLat) 缩放：1 拍→2 倍，3 拍→1.33 倍。**实验五那次 --dotp8-lat 扫描的意义在实验七这里才兑现**
+accel_mac              1.0        一个 int8 乘累加单元 ≈ 1 KB SRAM 的面积。**这是全表最值得质疑的一条**，见思考题
+accel_fixed            20.0       命令寄存器、地址生成、行缓冲、状态机
+e_sram_ref_kb          1.0        定义：访问 1 KB SRAM = 1 E
+e_sram_exp             0.5        访问能量主要是位线/字线的充放电，随阵列边长增长 → 约按容量的 0.5 次方
+e_mac                  0.05       一次 int8 乘加约为访问 1 KB SRAM 的 1/20
+e_core_per_cycle       3.0        核心每个活动周期的动态能量，正比于发射宽度。定成这个值，是为了让基线(8 发射)的核心动态能量约为L1D 访问能量的 3 倍——真实芯片里 L1 Cache 大约占核心动态功耗的 20~25%，这个比例要对，否则能量指标会退化成'指令数指标'，选出来的冠军和纯性能一模一样
+e_dram_per_line        25.0       一次 DRAM 行访问(64B)的能量远高于片上，取 25 E。**片外访存比片内贵一个量级**是本模型想传达的关键量级
+leak_per_area_cycle    0.008      泄漏功耗正比于面积、也正比于时间——**跑得慢的设计要多漏这么久**。系数定得让基线的泄漏约占总能量的 15~20%。这一条会让'又大又慢'的配置在能量上被双重惩罚，这是对的
+
+======================================================================
+⚠️ 这个模型最粗的三个地方（实验七思考题要你挑一个来质疑）：
+
+  1) core_fixed = 120 A 是一个**拍脑袋的常数**。它把译码器、TLB、时钟树
+     等等全都塞进一个数里。它占了基线核心面积的三分之一，
+     **却完全不随任何参数变化**——这意味着本模型系统性地低估了
+     "把核做窄"能省下的面积。
+
+  2) accel_mac = 1.0 A（一个 int8 MAC ≈ 1 KB SRAM）。这个比值在不同工艺、
+     不同实现（阵列 vs 独立单元）下可以差 3 倍以上。
+     **加速器的性价比结论对这一条最敏感。**
+
+  3) 能量模型里没有时钟树、没有片上互连、没有电压/频率的关系。
+     所有"每周期"的项都假设活动因子恒定。
+
+  **但是**：这三条都是**单调的**——它们会让某一类设计整体偏贵或偏便宜，
+  不会改变同一类设计内部的排序。所以"L2 从 256 kB 砍到 128 kB 省多少"
+  这类同类比较是可信的；"加速器 vs 加宽核心哪个划算"这类跨类比较
+  **必须在报告里注明它依赖于系数 2**。
+DUMPDONE

@@ -1,0 +1,108 @@
+########## (r) 最优解 b4/w6/pe83 的分项 ##########
+==================================================================
+out/lab7/dump7/R_best
+==================================================================
+部件                    面积(A)   占比
+------------------------------------------------------------------
+L1I                     8.3     1.4% 
+      kB                  2.0
+      assoc               2.0
+      数据                  2.0
+      tag                 0.2
+      相联                  0.1
+      替换状态                0.0
+      MSHR                6.0
+L1D                    15.3     2.6% █
+      kB                  8.0
+      assoc               2.0
+      数据                  8.0
+      tag                 1.0
+      相联                  0.3
+      替换状态                0.0
+      MSHR                6.0
+L2                    194.6    32.5% ████████████████
+      kB                128.0
+      assoc               8.0
+      数据                128.0
+      tag                15.4
+      相联                 20.5
+      替换状态                0.8
+      MSHR               30.0
+核心                    266.4    44.4% ██████████████████████
+      ROB                18.4
+      发射队列               15.5
+      LQ                  3.2
+      SQ                  3.2
+      物理寄存器              12.8
+      发射/旁路网络            75.5
+      分支预测器               7.2
+      BTB                10.2
+      RAS                 0.3
+      固定开销              120.0
+加速器                   115.0    19.2% █████████
+      pe                 83.0
+      outstanding         8.0
+      MAC 阵列             83.0
+      访存队列               12.0
+      控制/缓冲              20.0
+------------------------------------------------------------------
+总计                    599.6
+
+ROI 时间                67627 周期
+ROI 指令                84729 条  (IPC 1.253)
+
+能量来源                  能量(E)   占比
+------------------------------------------------------------------
+L1I 访问                  498     0.0% 
+L1D 访问                31777     1.9% 
+L2 访问                 36113     2.2% █
+DRAM                   2525     0.2% 
+核心                  1217286    73.6% ████████████████████████████████████
+加速器 MAC               40653     2.5% █
+泄漏                   324394    19.6% █████████
+------------------------------------------------------------------
+总能量                 1653246
+
+综合指标
+------------------------------------------------------------------
+  三个基本量（都是越小越好）
+    T  时间                   67627  周期
+    A  面积                   599.6  A
+    E  能量                 1653246  E
+  组合指标（越小越好）
+    ADP = A·T                 40.55   (A×1e6 周期)
+    EDP = E·T                111.80   (1e3 E×1e6 周期)
+    ED²P = E·T²                7.56   (1e3 E×1e12 周期²)
+  注：常说的"性能/面积"就是 1/ADP，"性能/能量"就是 1/EDP——
+      它们和上面两个是同一个指标的倒数，不是新指标。
+
+
+########## (s) batch=2 的 Roofline 右半边 ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+S_b2_128,74677,84824,644.6,1872802,48.1369,139.8553,10.4440,266.4,8.3,15.3,194.6,160.0,0.0
+S_b2_24,89485,84824,540.6,2141257,48.3757,191.6104,17.1463,266.4,8.3,15.3,194.6,56.0,0.0
+S_b2_32,81017,84824,548.6,1957395,44.4460,158.5823,12.8479,266.4,8.3,15.3,194.6,64.0,0.0
+S_b2_40,75946,84824,556.6,1848722,42.2716,140.4031,10.6631,266.4,8.3,15.3,194.6,72.0,0.0
+S_b2_48,74680,84824,564.6,1825077,42.1644,136.2967,10.1786,266.4,8.3,15.3,194.6,80.0,0.0
+S_b2_64,74680,84824,580.6,1834636,43.3593,137.0106,10.2320,266.4,8.3,15.3,194.6,96.0,0.0
+S_b2_96,74677,84824,612.6,1853685,45.7472,138.4276,10.3374,266.4,8.3,15.3,194.6,128.0,0.0
+--- b2 加速器统计 ---
+b2 pe=24   system.accel.macs=813056  system.accel.jobCycles=34327  system.accel.busyCycles=34223  system.accel.stallCycles=351  system.accel.bytesPerCycle=12.055350  system.accel.macsPerCycle=23.685612  
+b2 pe=32   system.accel.macs=813056  system.accel.jobCycles=25859  system.accel.busyCycles=25755  system.accel.stallCycles=350  system.accel.bytesPerCycle=16.003094  system.accel.macsPerCycle=31.441896  
+b2 pe=40   system.accel.macs=813056  system.accel.jobCycles=20788  system.accel.busyCycles=20684  system.accel.stallCycles=368  system.accel.bytesPerCycle=19.906869  system.accel.macsPerCycle=39.111795  
+b2 pe=48   system.accel.macs=813056  system.accel.jobCycles=19520  system.accel.busyCycles=19416  system.accel.stallCycles=6713  system.accel.bytesPerCycle=21.200000  system.accel.macsPerCycle=41.652459  
+b2 pe=64   system.accel.macs=813056  system.accel.jobCycles=19520  system.accel.busyCycles=19416  system.accel.stallCycles=6723  system.accel.bytesPerCycle=21.200000  system.accel.macsPerCycle=41.652459  
+b2 pe=96   system.accel.macs=813056  system.accel.jobCycles=19517  system.accel.busyCycles=19413  system.accel.stallCycles=13069  system.accel.bytesPerCycle=21.203259  system.accel.macsPerCycle=41.658862  
+b2 pe=128  system.accel.macs=813056  system.accel.jobCycles=19517  system.accel.busyCycles=19413  system.accel.stallCycles=13072  system.accel.bytesPerCycle=21.203259  system.accel.macsPerCycle=41.658862  
+
+########## (t) 最优解的加速器统计 ##########
+R_best   system.accel.jobs=4  system.accel.macs=813056  system.accel.bytesRead=210560  system.accel.jobCycles=10198  system.accel.busyCycles=10146  system.accel.stallCycles=356  system.accel.bytesPerCycle=20.647186  system.accel.macsPerCycle=79.727005  
+--- 同一底盘 pe=48 的对照（b4）---
+system.accel.jobs=4  system.accel.macs=813056  system.accel.bytesRead=210560  system.accel.jobCycles=17334  system.accel.busyCycles=17282  system.accel.stallCycles=346  system.accel.bytesPerCycle=12.147225  system.accel.macsPerCycle=46.905273  
+--- CPU 侧：最优解里 CPU 和加速器各占多少 ---
+out/lab7/dump7/R_best            system.cpu.numCycles=67627  system.cpu.ipc=1.252887  
+out/lab7/dump6/N_b4_w6_48        system.cpu.numCycles=74256  system.cpu.ipc=1.141039  
+
+########## (u) checksum ##########
+      8 qnn samples=8 seed=0x01352505 checksum=0x1989da45
+DUMP7DONE

@@ -1,0 +1,30 @@
+########## (e) 35.4 A 裕量的全部候选（底盘 b4/pe48/w6/564.6A/74256） ##########
+  FAIL E_l2mshr
+  FAIL E_pf
+  FAIL E_l2160
+找不到 out/lab7/dump4/E_l2mshr/config.ini —— 参数应当是 gem5 的 --outdir 目录
+
+########## (k) 帕累托前沿最终版：b4 底盘 × width 2..8 ##########
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+K_w2,81425,84729,486.9,914606,39.6441,74.4718,6.0639,188.7,8.3,15.3,194.6,80.0,0.0
+K_w3,77942,84729,501.3,1123875,39.0708,87.5971,6.8275,203.1,8.3,15.3,194.6,80.0,0.0
+K_w4,76326,84729,519.2,1343404,39.6252,102.5366,7.8262,220.9,8.3,15.3,194.6,80.0,0.0
+K_w5,75292,84729,540.3,1565862,40.6812,117.8969,8.8767,242.1,8.3,15.3,194.6,80.0,0.0
+K_w6,74256,84729,564.6,1783575,41.9250,132.4411,9.8345,266.4,8.3,15.3,194.6,80.0,0.0
+K_w8,73847,84729,622.1,2252538,45.9438,166.3432,12.2839,323.9,8.3,15.3,194.6,80.0,0.0
+
+########## (l) 取指假说的第三次交叉验证：qnn 的基本块长度 ##########
+qnn  w=2  system.cpu.numCycles=3341827  system.cpu.decode.blockedCycles=8267  system.cpu.fetch.predictedBranches=824216  system.cpu.fetch.cycles=3327159  
+qnn  w=4  system.cpu.numCycles=1711487  system.cpu.decode.blockedCycles=46119  system.cpu.fetch.predictedBranches=828823  system.cpu.fetch.cycles=1696372  
+qnn  w=6  system.cpu.numCycles=1703782  system.cpu.decode.blockedCycles=30437  system.cpu.fetch.predictedBranches=826645  system.cpu.fetch.cycles=1688862  
+qnn  w=8  system.cpu.numCycles=1099934  system.cpu.decode.blockedCycles=303391  system.cpu.fetch.predictedBranches=834590  system.cpu.fetch.cycles=1084779  
+--- ROI 指令数（从 run.log 的 area.py 口径）---
+outdir,cycles,insts,area,energy,adp,edp,ed2p,area_core,area_l1i,area_l1d,area_l2,area_accel,area_dotp8
+C_w2,3341827,5801400,694.4,48111160,2320.6603,160779.1743,537296.1858,248.9,43.2,43.2,359.2,0.0,0.0
+C_w4,1711487,5801400,728.8,40021023,1247.3640,68495.4610,117229.0910,283.3,43.2,43.2,359.2,0.0,0.0
+C_w6,1703782,5801400,776.4,50754448,1322.7731,86474.5156,147333.7231,330.8,43.2,43.2,359.2,0.0,0.0
+C_w8,1099934,5801400,836.0,43269531,919.5819,47593.6287,52349.8504,390.5,43.2,43.2,359.2,0.0,0.0
+
+########## (m) checksum ##########
+     39 qnn samples=8 seed=0x01352505 checksum=0x1989da45
+DUMP5DONE
