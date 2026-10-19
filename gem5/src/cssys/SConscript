@@ -1,0 +1,11 @@
+# cssys: 计算机系统综合设计实验 —— 实验六的加速器
+#
+# src/SConscript 会自动遍历整棵树、执行每个子目录下的 SConscript，
+# 所以把目录放进 src/ 就够了，不需要在别处登记。
+
+Import('*')
+
+SimObject('Dotp8Accel.py', sim_objects=['Dotp8Accel'])
+Source('dotp8_accel.cc')
+
+DebugFlag('Dotp8Accel', "实验六：dotp8 加速器的 DMA 与计算流水")

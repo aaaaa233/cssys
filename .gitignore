@@ -1,3 +1,10 @@
 __pycache__/
 *.py[cod]
 server.txt
+results/
+labs/**/_qa/
+labs/**/参考数据/
+labs/**/*.md
+labs/**/*.pptx
+gem5/build/
+gem5/util/m5/build/
